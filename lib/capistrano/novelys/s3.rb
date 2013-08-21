@@ -2,7 +2,7 @@
 after 'deploy:update_code', 's3:symlink'
 
 ## Tasks
-namespace :database do
+namespace :s3 do
   desc "Copy amazon S3 config"
   task :copy do
     upload "config/amazon_s3.yml", "#{shared_path}/amazon_s3.yml", :via => :scp

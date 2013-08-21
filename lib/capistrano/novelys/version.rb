@@ -1,5 +1,5 @@
 module Capistrano
   module Novelys
-    VERSION = '0.1.0'
+    VERSION = '0.1.1'
   end
 end
