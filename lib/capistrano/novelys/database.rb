@@ -15,11 +15,11 @@ namespace :database do
 
   desc "Copy database config"
   task :copy do
-    upload "config/database.yml", "#{shared_path}/database.yml", :via => :scp
+    upload "config/database.yml", "#{shared_path}/config/database.yml", :via => :scp
   end
 
   desc "Link the config/database.yml file in the release_path"
   task :symlink do
-    run "test -f #{release_path}/config/database.yml || ln -s #{shared_path}/database.yml #{release_path}/config/database.yml"
+    run "test -f #{release_path}/config/database.yml || ln -s #{shared_path}/config/database.yml #{release_path}/config/database.yml"
   end
 end
