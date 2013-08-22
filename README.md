@@ -17,7 +17,7 @@ In your deploy.rb :
 
 * remove `require "production_chain/capistrano";
 * add `require 'capistrano/novelys'` (loads the core recipes)
-* load recipes you need, eg: `use_stack :database, :rails2, :rbenv, :whenever`
+* load recipes you need, eg: `use_stack self, :database, :rails2, :rbenv, :whenever`
 * Make sure you don't have duplicates
 
 ## Recipes available
