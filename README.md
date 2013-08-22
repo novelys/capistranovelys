@@ -17,7 +17,6 @@ In your deploy.rb :
 
 * remove `require "production_chain/capistrano";
 * add `require 'capistrano/novelys'` (loads the core recipes)
-* optionnally, add `require 'capistrano/novelys/stack'` (loads recipes that are in use in almost every project here)
 * load recipes you need, eg:  `load 'novelys/database'`
 * Make sure you don't have duplicates
 
@@ -33,42 +32,70 @@ Basically, using core means you're using git, you're using rails, and you'll kee
 
 This gem has a dependency on `sushi`. This allows you to do `capistrano [stage] ssh`.
 
-### Database
+### Rails 2 (`rails-2`)
+
+* `rails2:console` : open a rails console
+* `rails2:secret_token:copy` : copy the session_store from your local file to the shared path
+* `rails2:secret_token:symlink` : symlink the session_store.rb file from the shared path to the current path. Hooked after `deploy:update_code`
+
+### Rails 3 (`rails-3`)
+
+* `rails3:console` : open a rails console
+* `rails":secret_token:copy` : copy the secret_token from your local file to the shared path
+* `rails3:secret_token:symlink` : symlink the secret_token.rb file from the shared path to the current path. Hooked after `deploy:update_code`
+
+### Database (`database`)
 
 * `database:create` : create the database
 * `database:seed` : seed the database
 * `database:copy` : copy the database.yml from your local file to the shared path
 * `database:symlink` : symlink the database.yml file from the shared path to the current path. Hooked after `deploy:update_code`
 
-### Mongoid
+### Mongoid (`mongoid`)
 
 * `mongoid:copy` : copy the mongoid.yml from your local file to the shared path
 * `mongoid:symlink` : symlink the mongoid.yml file from the shared path to the current path. Hooked after `deploy:update_code`
 * `mongoid:index` : create the indexes
 
-### Logs
+### Logs (`logs`)
 
 * `logs:tail` : tail the logs of the rails app
 
-### Rbenv
+### Rbenv (`rbenv`)
 
 Setup the `default_environment` with the correct path for rbenv
 
-### Remote_commands
+### Remote commands (`remote_commands`)
 
 * `remote:rake` : Execute a rake task on the target (eg: `cap remote:rake "assets:precompile"`)
 * `remote:command` : Execute a shell command on the target (eg: `cap remote:command ls`)
 
-### S3
+### S3 (`s3`)
 
 * `s3:copy` : copy the amazon_s3.yml from your local file to the shared path
 * `s3:symlink` : symlink the amazon_s3.yml file from the shared path to the current path. Hooked after `deploy:update_code`
 
-### Unicorn
+### Unicorn (`unicorn`)
 
 `deploy:start`, `deploy:stop`, `deploy:graceful_stop`, `deploy:reload`, `deploy:restart` tasks for unicorn
 
-### Whenever
+### Airbrake (`airbrake`)
+
+* `airbrake:copy` : copy the airbrake.rb from your local file to the shared path
+* `airbrake:symlink` : symlink the airbrake.rb file from the shared path to the current path. Hooked after `deploy:update_code`
+
+### Sphinx (`sphinx`)
+
+* `thinking_sphinx:copy` : copy the *.sphinx.conf from your local file to the shared path
+* `thinking_sphinx:symlink` : symlink the *.sphinx.conf file from the shared path to the current path. Hooked after `deploy:update_code`
+* Every task available under the namespace `thinking_sphinx` is also available under the namespace `ts`, eg. `ts:rebuild`
+
+### Sunspot (`sunspot`)
+
+* `sunspot:copy` : copy the sunspot.yml from your local file to the shared path
+* `sunspot:symlink` : symlink the sunspot.yml file from the shared path to the current path. Hooked after `deploy:update_code`
+
+### Whenever (`whenever`)
 
 Setup options for the `whenever` gem
 
