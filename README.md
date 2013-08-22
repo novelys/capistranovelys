@@ -17,7 +17,7 @@ In your deploy.rb :
 
 * remove `require "production_chain/capistrano";
 * add `require 'capistrano/novelys'` (loads the core recipes)
-* load recipes you need, eg:  `load 'novelys/database'`
+* load recipes you need, eg: `use_stack :database, :rails2, :rbenv, :whenever`
 * Make sure you don't have duplicates
 
 ## Recipes available
@@ -32,13 +32,13 @@ Basically, using core means you're using git, you're using rails, and you'll kee
 
 This gem has a dependency on `sushi`. This allows you to do `capistrano [stage] ssh`.
 
-### Rails 2 (`rails-2`)
+### Rails 2 (`rails2`)
 
 * `rails2:console` : open a rails console
 * `rails2:secret_token:copy` : copy the session_store from your local file to the shared path
 * `rails2:secret_token:symlink` : symlink the session_store.rb file from the shared path to the current path. Hooked after `deploy:update_code`
 
-### Rails 3 (`rails-3`)
+### Rails 3 (`rails3`)
 
 * `rails3:console` : open a rails console
 * `rails":secret_token:copy` : copy the secret_token from your local file to the shared path
