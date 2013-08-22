@@ -12,9 +12,9 @@ module Capistrano
         cmd = "cd #{release} && #{rake} RAILS_ENV=#{env} #{rake_cmd}"
         cmd += "['#{rake_args.join("','")}']" unless rake_args.empty?
 
-        run cmd
+        cap.run cmd
 
-        set :rakefile, nil if exists?(:rakefile)
+        cap.set :rakefile, nil if cap.exists?(:rakefile)
       end
       module_function :run_remote_rake
     end
