@@ -13,7 +13,7 @@ namespace :rails3 do
 
     desc "Symlink the secret token file in the current release"
     task :symlink do
-      run "test -f #{release_path}/initializers/secret_token.rb || ln -s #{shared_path}/initializers/secret_token.rb #{release_path}/initializers/session_store.rb"
+      run "test -f #{release_path}/initializers/secret_token.rb || ln -s #{shared_path}/initializers/secret_token.rb #{release_path}/initializers/secret_token.rb"
     end
   end
 
