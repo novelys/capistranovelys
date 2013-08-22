@@ -1,6 +1,7 @@
 # This is our default stack
 
 require "capistrano"
+require "capistrano/novelys/core_extensions"
 require "capistrano/novelys/version"
 require "capistrano/novelys/helpers"
 
