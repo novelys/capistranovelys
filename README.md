@@ -18,7 +18,7 @@ In your deploy.rb :
 * remove `require "production_chain/capistrano";
 * add `require 'capistrano/novelys'` (loads the core recipes)
 * load recipes you need, eg: `use_stack :database, :rails2, :rbenv, :whenever`. To be used **BEFORE** other loading of recipes such as `deploy/assets`, otherwise some hooks (such as the symlinks) will be executed too late.
-  * You can use `use_default_stack_and [arg, ...]`. It will load `airbrake`, `rbenv`, `unicorn`, `logs`, `remote_commands`, and the recipes supplied as arguments.
+  * You can use `use_default_stack_and [arg, ...]`. It will load `airbrake`, `rbenv`, `unicorn`, `logs`, `remote_commands`, and the recipes supplied as arguments. Use `use_default_stack` if you don't want/need anything else.
 * Make sure you don't have duplicates!
 
 ## Recipes available
