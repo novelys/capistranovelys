@@ -7,10 +7,15 @@ set(:use_sudo)         { false }
 set(:deploy_via)       { :remote_cache }
 set(:repository_cache) { 'git_cache' }
 set(:copy_exclude)     { %w(.svn .DS_Store .git) }
-set(:deploy_to)        { "/home/#{user}/www" }
 set(:keep_releases)    { 5 }
 set(:public_children)  { %w(images) }
 set(:bundle_cmd)       { 'bundle' }
+
+## Default app configuration
+set(:user)             { application }
+set(:deploy_to)        { "/home/#{user}/www/" }
+set(:github_account)   { 'novelys' }
+set(:repository)       { "git@github.com:#{github_account}/#{application}" }
 
 ## SSH Options
 ssh_options[:forward_agent] = true
