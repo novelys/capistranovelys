@@ -18,7 +18,7 @@ In your deploy.rb :
 * remove `require "production_chain/capistrano";
 * add `require 'capistrano/novelys'` (loads the core recipes)
 * load recipes you need, eg: `use_stack :database, :rails2, :rbenv, :whenever`. To be used **BEFORE** other loading of recipes such as `deploy/assets`, otherwise some hooks (such as the symlinks) will be executed too late.
-  * You can use `use_default_stack_and [arg, ...]`. It will load `airbrake`, `rbenv`, `unicorn`, `logs`, `remote_commands`, and the recipes supplied as arguments. Use `use_default_stack` if you don't want/need anything else.
+  * You can use `use_default_stack_and [arg, ...]`. It will load `airbrake`, `rbenv`, `unicorn`, `logs`, `stages`, `remote_commands`, and the recipes supplied as arguments. Use `use_default_stack` if you don't want/need anything else.
 * Make sure you don't have duplicates!
 
 ## Recipes available
@@ -44,6 +44,16 @@ This gem has a dependency on `sushi`. This allows you to do `capistrano [stage] 
 * `rails3:console` : open a rails console
 * `rails":secret_token:copy` : copy the secret_token from your local file to the shared path
 * `rails3:secret_token:symlink` : symlink the secret_token.rb file from the shared path to the current path. Hooked after `deploy:update_code`
+
+### Stages (`stages`)
+
+Replacement with better defaults for stages:
+
+* bundles two stages, `staging` and `production`, `staging` being the default`;
+* those stages comes with default for `branch` and `rails_env`; staging can override `branch` at runtime (via `cap -S branch=value`);
+* if no stages are specified, stages are defined and loaded by looking in `config/deploy/*.rb`
+
+You should not require `capistrano/ext/multistage`.
 
 ### Database (`database`)
 
