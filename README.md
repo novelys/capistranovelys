@@ -18,7 +18,7 @@ In your deploy.rb :
 * remove `require "production_chain/capistrano";
 * add `require 'capistrano/novelys'` (loads the core recipes)
 * load recipes you need, eg: `use_stack :database, :rails2, :rbenv, :whenever`. To be used **BEFORE** other loading of recipes such as `deploy/assets`, otherwise some hooks (such as the symlinks) will be executed too late.
-  * You can use `use_default_stack_and [arg, ...]`. It will load `airbrake`, `rbenv`, `unicorn`, `logs`, `stages`, `remote_commands`, and the recipes supplied as arguments. Use `use_default_stack` if you don't want/need anything else.
+  * You can use `use_default_stack_and [arg, ...]`. It will load `airbrake`, `rbenv`, `unicorn`, `logs`, `stages`, `remote_commands, production_chain`, and the recipes supplied as arguments. Use `use_default_stack` if you don't want/need anything else.
 * Make sure you don't have duplicates!
 
 ## Recipes available
@@ -71,6 +71,13 @@ You should not require `capistrano/ext/multistage`.
 ### Logs (`logs`)
 
 * `logs:tail` : tail the logs of the rails app
+
+### Production chain (`production_chain`)
+
+Recipes usings rake tasks from [novelys/production_chain](https://github.com/novelys/production_chain)
+
+* `db:dump_and_restore`: restore the database from the server to your local env. Supply `FILE=mongoid` when using mongoid.
+* `assets:dump_and_restore`: restore the assets from the public direction to your local env.
 
 ### Rbenv (`rbenv`)
 
