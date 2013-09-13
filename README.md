@@ -120,3 +120,4 @@ Setup options for the `whenever` gem
 ## Projects using it
 
 * dieppe
+* bookdevente
