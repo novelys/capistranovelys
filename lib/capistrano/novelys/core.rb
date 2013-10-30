@@ -19,6 +19,7 @@ set(:repository)       { "git@github.com:#{github_account}/#{application}" }
 
 ## SSH Options
 ssh_options[:forward_agent] = true
+default_run_options[:pty] = true
 
 ## Default hooks
 after 'deploy:update', 'deploy:cleanup'
