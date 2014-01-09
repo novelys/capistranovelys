@@ -8,7 +8,7 @@ This gem, once stable, should include every recipe/task that serves for more tha
 meaning you can remove `capistrano` and `capistrano-ext` from your Gemfile, and replace it with :
 
 ```ruby
-gem "capistranovelys", :git => 'git@github.com:novelys/capistranovelys.git'
+gem "capistranovelys", '~> 1.0.0'
 ```
 
 ## Usage
