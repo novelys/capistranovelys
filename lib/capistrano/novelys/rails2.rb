@@ -19,17 +19,16 @@ namespace :rails2 do
 
   desc "Open a Rails console"
   task :console do
-    input = ''
-    run "cd #{current_path} && #{bundle_cmd} exec script/console #{rails_env}", :once => true do |chan, stream, data|
-      next if data.chomp == input.chomp || data.chomp == ''
-      print data
-      next unless data.chomp =~ />\s+$/ # Bad prompt detection
-
-      # Readline's quite tolerant, but most control codes (Ctrl-u, Ctrl-l, ...)
-      # will screw up the process' stream.
-      input = Readline.readline('', true)
-      break if input.nil? # EOF
-      chan.send_data "#{input}\n"
-    end
+    run_interactively "bundle exec script/console #{rails_env}"
   end
+
+  desc "Open a DBConsole"
+  task :dbconsole do
+    run_interactively "bundle exec script/dbconsole #{rails_env}"
+  end
+end
+
+def run_interactively(command, server = nil)
+  server ||= find_servers_for_task(current_task).first
+  exec %Q(ssh #{user}@#{server.host} -t 'cd #{current_path} && #{command}')
 end
