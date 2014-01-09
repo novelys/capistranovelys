@@ -1,7 +1,7 @@
 require 'readline'
 
 ## Hooks
-after 'deploy:update_code', 'rails3:secret_token:symlink'
+after 'deploy:update_code', 'rails:secret_token:symlink'
 
 ## Tasks
 namespace :rails do
