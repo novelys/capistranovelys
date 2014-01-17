@@ -45,9 +45,9 @@ Rails 3 & 4 commands.
 
 Rails 2 commands.
 
-* `rails2:console` : open a rails console
-* `rails2:secret_token:copy` : copy the session_store from your local file to the shared path
-* `rails2:secret_token:symlink` : symlink the session_store.rb file from the shared path to the current path. Hooked after `deploy:update_code`
+* `rails:console` : open a rails console
+* `rails:secret_token:copy` : copy the session_store from your local file to the shared path
+* `rails:secret_token:symlink` : symlink the session_store.rb file from the shared path to the current path. Hooked after `deploy:update_code`
 
 ### Stages (`stages`)
 

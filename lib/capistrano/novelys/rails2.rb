@@ -1,10 +1,10 @@
 require 'readline'
 
 ## Hooks
-after 'deploy:update_code', 'rails2:secret_token:symlink'
+after 'deploy:update_code', 'rails:secret_token:symlink'
 
 ## Tasks
-namespace :rails2 do
+namespace :rails do
   namespace :secret_token do
     desc "Copy the secret token file to the server"
     task :copy do
