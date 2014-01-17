@@ -8,7 +8,7 @@ module Capistrano
     # Sugar for loading common recipes (+ supplied is present)
     def use_novelys(*args)
       args = ([:airbrake, :logs, :production_chain, :rbenv, :remote_commands, :novelys, :stages] + args).uniq
-      use_stack(*args)
+      use_recipes(*args)
     end
     alias :use_novelys_and :use_novelys
   end

@@ -1,3 +1,7 @@
+## `2.0.1`
+
+* Fix a typo preventing the use of `use_novelys`
+
 ## `2.0.0`
 
 * Add missing sphinx recipes;

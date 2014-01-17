@@ -8,7 +8,7 @@ This gem includes every recipe/task that is in use in more than one project at N
 meaning you can remove `capistrano` and `capistrano-ext` from your Gemfile, and replace it with :
 
 ```ruby
-gem "capistranovelys", '~> 2.0.0'
+gem "capistranovelys", '~> 2.0.1'
 ```
 
 ## Usage
