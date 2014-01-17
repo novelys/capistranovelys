@@ -9,8 +9,10 @@ set(:repository_cache) { 'git_cache' }
 set(:copy_exclude)     { %w(.svn .DS_Store .git) }
 set(:keep_releases)    { 5 }
 set(:public_children)  { %w(images) }
-set(:bundle_cmd)       { 'bundle' }
 
+## Bundle
+set(:bundle_cmd)       { 'bundle' }
+set(:bundle_without)   { (stages + [:development, :test]) - [stage] }
 
 ## SSH Options
 ssh_options[:forward_agent] = true
