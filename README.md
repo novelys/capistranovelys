@@ -1,6 +1,6 @@
 # Capistranovelys - Keeping our recipes DRY
 
-This gem, once stable, should include every recipe/task that serves for more than one of our project.
+This gem includes every recipe/task that is in use in more than one project at Novelys.
 
 ## Installation
 
@@ -15,7 +15,7 @@ gem "capistranovelys", '~> 1.0.0'
 
 In your deploy.rb :
 
-* remove `require "production_chain/capistrano";
+* remove `require "production_chain/capistrano" if you are using [novelys/production_chain](https://github.com/novelys/production_chain)
 * add `require 'capistrano/novelys'` (loads the core recipes)
 * load recipes you need, eg: `use_recipes :database, :rails2, :rbenv, :whenever`. To be used **BEFORE** other loading of recipes such as `deploy/assets`, otherwise some hooks (such as the symlinks) will be executed too late.
   * You can use `use_novelys_and [arg, ...]`. It will load `airbrake`, `rbenv`, `logs`, `stages`, `remote_commands, production_chain`, and the recipes supplied as arguments. This will also use Novelys' configuration for `user`, `deploy_to`, and `repository`. Use `use_novelys` if you don't want/need anything else.
@@ -79,7 +79,7 @@ You should not require `capistrano/ext/multistage`.
 
 ### Production chain (`production_chain`)
 
-Recipes usings rake tasks from [novelys/production_chain](https://github.com/novelys/production_chain)
+Recipes usings rake tasks from [novelys/production_chain](https://github.com/novelys/production_chain). Will work only if the gem is present.
 
 * `db:dump_and_restore`: restore the database from the server to your local env. Supply `FILE=mongoid` when using mongoid.
 * `assets:dump_and_restore`: restore the assets from the public direction to your local env.
