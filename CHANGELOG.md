@@ -1,3 +1,7 @@
+## `2.0.2`
+
+* Fix an omission in a rails2 tasks
+
 ## `2.0.1`
 
 * Fix a typo preventing the use of `use_novelys`
